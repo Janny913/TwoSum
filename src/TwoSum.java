@@ -1,0 +1,27 @@
+import java.util.*;
+/**
+ * Created by jianiyang on 16/7/11.
+ */
+public class TwoSum {
+    public int[] twoSum(int[] numbers, int target) {
+        int[] result = new int[2];
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (map.containsKey(target - numbers[i])) {
+                result[1] = i + 1;
+                result[0] = map.get(target - numbers[i]);
+                return result;
+            }
+            map.put(numbers[i], i + 1);
+        }
+        return result;
+    }
+    public static void main(String[] args){
+        TwoSum ts = new TwoSum();
+        int[] input = {2,7,10,11};
+        int target = 9;
+        int[] res = ts.twoSum(input, target);
+        for(int i = 0; i < 2; i++)
+        System.out.println(res[i]);
+    }
+}
